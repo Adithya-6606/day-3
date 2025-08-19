@@ -1,0 +1,155 @@
+/* ==============================
+   CSS VARIABLES
+============================== */
+:root {
+    --primary-color: #2575fc;
+    --secondary-color: #6a11cb;
+    --text-color: #333;
+    --bg-gradient: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    --font-main: "Segoe UI", Arial, sans-serif;
+}
+
+/* ==============================
+   GENERAL STYLING
+============================== */
+body {
+    font-family: var(--font-main);
+    background: var(--bg-gradient);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* ==============================
+   CONTAINER WITH ANIMATION
+============================== */
+.container {
+    background: #ffffff;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
+    width: 350px;
+    position: relative;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Decorative ::before and ::after */
+.container::before,
+.container::after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    opacity: 0.15;
+}
+.container::before {
+    top: -15px;
+    left: -15px;
+}
+.container::after {
+    bottom: -15px;
+    right: -15px;
+}
+
+/* ==============================
+   HEADING
+============================== */
+h1 {
+    text-align: center;
+    color: var(--text-color);
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+/* ==============================
+   FORM ELEMENTS
+============================== */
+label {
+    margin-top: 12px;
+    display: block;
+    font-weight: 600;
+    color: #444;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0px 0px 6px rgba(37, 117, 252, 0.4);
+    outline: none;
+}
+
+/* ==============================
+   ANIMATED BUTTON
+============================== */
+.animated-btn {
+    margin-top: 18px;
+    padding: 12px;
+    background: var(--bg-gradient);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Hover animation */
+.animated-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Shine effect using ::before */
+.animated-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75px;
+    width: 50px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: skewX(-20deg);
+}
+
+/* Button hover shine animation */
+.animated-btn:hover::before {
+    animation: shine 0.8s forwards;
+}
+
+/* ==============================
+   SUCCESS MESSAGE
+============================== */
+#successMessage {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+    color: green;
+}
+
+/* ==============================
+   ANIMATIONS
+============================== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shine {
+    from { left: -75px; }
+    to { left: 110%; }
+}
